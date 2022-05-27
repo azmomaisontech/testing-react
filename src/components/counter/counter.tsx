@@ -10,7 +10,9 @@ export default function Counter() {
       <h1 data-testid="header-text">My Counter</h1>
       <h2
         data-testid="counter"
-        style={{ color: count > 100 ? "green" : undefined }}
+        style={{
+          color: count > 100 ? "green" : count < -100 ? "red" : undefined,
+        }}
       >
         {count}
       </h2>

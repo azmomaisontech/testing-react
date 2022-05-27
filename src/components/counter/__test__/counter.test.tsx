@@ -71,4 +71,34 @@ describe("Counter", () => {
       Number(counterInitialValue) - Number(decrementInput)
     );
   });
+
+  it("should change color of counter to green if count > 100", () => {
+    render(<Counter />);
+    const incrementInput = "101";
+    const plusButton = screen.getByTestId("plus");
+    const input: HTMLInputElement = screen.getByTestId("input");
+    const counter = screen.getByTestId("counter");
+    fireEvent.change(input, {
+      target: {
+        value: incrementInput,
+      },
+    });
+    fireEvent.click(plusButton);
+    expect(counter.style.color).toBe("green");
+  });
+
+  it("should change color of counter to red if count < -100", () => {
+    render(<Counter />);
+    const incrementInput = "101";
+    const minusButton = screen.getByTestId("minus");
+    const input: HTMLInputElement = screen.getByTestId("input");
+    const counter = screen.getByTestId("counter");
+    fireEvent.change(input, {
+      target: {
+        value: incrementInput,
+      },
+    });
+    fireEvent.click(minusButton);
+    expect(counter.style.color).toBe("red");
+  });
 });
