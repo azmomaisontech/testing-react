@@ -15,7 +15,10 @@ export default function Counter() {
         {count}
       </h2>
       <AddContainer>
-        <button onClick={() => setCount((count) => count - increment)}>
+        <button
+          data-testid="minus"
+          onClick={() => setCount((count) => count - increment)}
+        >
           <span>-</span>
         </button>
         <input
@@ -25,7 +28,10 @@ export default function Counter() {
           value={increment}
           onChange={(e) => setIncrement(Number(e.target.value))}
         />
-        <button onClick={() => setCount((count) => count + increment)}>
+        <button
+          data-testid="plus"
+          onClick={() => setCount((count) => count + increment)}
+        >
           <span>+</span>
         </button>
       </AddContainer>
