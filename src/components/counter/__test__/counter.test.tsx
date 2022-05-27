@@ -1,4 +1,4 @@
-import {render, cleanup, screen, fireEvent} from "@testing-library/react";
+import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import Counter from "../counter";
 
 describe("Counter", () => {
@@ -16,9 +16,20 @@ describe("Counter", () => {
     expect(counterCount.textContent).toBe("0");
   });
 
-  it("should have an input that starts at 1" , () => {
-    render(<Counter />)
-    const input: HTMLInputElement = screen.getByTestId("input")
+  it("should have an input that starts at 1", () => {
+    render(<Counter />);
+    const input: HTMLInputElement = screen.getByTestId("input");
     expect(input.value).toBe("1");
-  })
+  });
+
+  it("should update input value on user's change event", () => {
+    render(<Counter />);
+    const input: HTMLInputElement = screen.getByTestId("input");
+    fireEvent.change(input, {
+      target: {
+        value: "4",
+      },
+    });
+    expect(input.value).toBe("4");
+  });
 });
