@@ -7,13 +7,19 @@ export default function Counter() {
 
   return (
     <CounterWrapper>
-      <h1>My Counter</h1>
-      <h2 style={{ color: count > 100 ? "green" : undefined }}>{count}</h2>
+      <h1 data-testid="header-text">My Counter</h1>
+      <h2
+        data-testid="counter"
+        style={{ color: count > 100 ? "green" : undefined }}
+      >
+        {count}
+      </h2>
       <AddContainer>
         <button onClick={() => setCount((count) => count - increment)}>
           <span>-</span>
         </button>
         <input
+          data-testid="input"
           type="number"
           name="increment"
           value={increment}

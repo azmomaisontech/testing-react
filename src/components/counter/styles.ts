@@ -7,12 +7,13 @@ export const CounterWrapper = styled.div`
   justify-content: center;
 
   h1 {
-    margin: 1em 0;
+    margin: 2em 0 0.5em 0;
+    font-size: 3em;
   }
 
   h2 {
-    margin-bottom: 1em;
-    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    font-size: 3em;
   }
 `;
 
