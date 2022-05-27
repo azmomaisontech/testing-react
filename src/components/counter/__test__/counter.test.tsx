@@ -36,27 +36,39 @@ describe("Counter", () => {
 
   it("should increase count on clicking the plus button", () => {
     render(<Counter />);
+    const incrementInput = "5";
     const plusButton = screen.getByTestId("plus");
-    const input: HTMLInputElement = screen.getByTestId("input");
     const counter = screen.getByTestId("counter");
+    const input: HTMLInputElement = screen.getByTestId("input");
     const counterInitialValue = counter.textContent;
+    fireEvent.change(input, {
+      target: {
+        value: incrementInput,
+      },
+    });
     fireEvent.click(plusButton);
     expect(counter.textContent).not.toEqual(counterInitialValue);
     expect(Number(counter.textContent)).toBe(
-      Number(counterInitialValue) + Number(input.value)
+      Number(counterInitialValue) + Number(incrementInput)
     );
   });
 
   it("should decrease count on clicking the minus button", () => {
     render(<Counter />);
+    const decrementInput = "5";
     const minusButton = screen.getByTestId("minus");
     const input: HTMLInputElement = screen.getByTestId("input");
     const counter = screen.getByTestId("counter");
     const counterInitialValue = counter.textContent;
+    fireEvent.change(input, {
+      target: {
+        value: decrementInput,
+      },
+    });
     fireEvent.click(minusButton);
     expect(counter.textContent).not.toEqual(counterInitialValue);
     expect(Number(counter.textContent)).toBe(
-      Number(counterInitialValue) - Number(input.value)
+      Number(counterInitialValue) - Number(decrementInput)
     );
   });
 });
