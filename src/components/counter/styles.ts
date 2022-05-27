@@ -14,6 +14,7 @@ export const CounterWrapper = styled.div`
   h2 {
     margin-bottom: 0.5em;
     font-size: 3em;
+    color: black;
   }
 `;
 
