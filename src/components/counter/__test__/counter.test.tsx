@@ -1,5 +1,6 @@
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import Counter from "../counter";
+import userEvent from "@testing-library/user-event";
 
 describe("Counter", () => {
   afterAll(cleanup);
@@ -60,11 +61,13 @@ describe("Counter", () => {
     const input: HTMLInputElement = screen.getByTestId("input");
     const counter = screen.getByTestId("counter");
     const counterInitialValue = counter.textContent;
-    fireEvent.change(input, {
-      target: {
-        value: decrementInput,
-      },
-    });
+    expect(minusButton).not.toBeDisabled();
+    userEvent.type(input, decrementInput);
+    // fireEvent.change(input, {
+    //   target: {
+    //     value: decrementInput,
+    //   },
+    // });
     fireEvent.click(minusButton);
     expect(counter.textContent).not.toEqual(counterInitialValue);
     expect(Number(counter.textContent)).toBe(
